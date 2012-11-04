@@ -71,12 +71,13 @@
             // 
             // restAbsorption
             // 
+            this.restAbsorption.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.restAbsorption.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.restAbsorption.FormattingEnabled = true;
             this.restAbsorption.Items.AddRange(new object[] {
             "直前の音のテヌートに変換",
             "消去する"});
-            this.restAbsorption.Location = new System.Drawing.Point(787, 350);
+            this.restAbsorption.Location = new System.Drawing.Point(621, 350);
             this.restAbsorption.Name = "restAbsorption";
             this.restAbsorption.Size = new System.Drawing.Size(170, 20);
             this.restAbsorption.TabIndex = 6;
@@ -84,8 +85,9 @@
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(709, 353);
+            this.label7.Location = new System.Drawing.Point(543, 353);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 12);
             this.label7.TabIndex = 32;
@@ -93,6 +95,7 @@
             // 
             // restThreshold
             // 
+            this.restThreshold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.restThreshold.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.restThreshold.FormattingEnabled = true;
             this.restThreshold.Items.AddRange(new object[] {
@@ -101,7 +104,7 @@
             "32分音符",
             "64分音符",
             "単位時間"});
-            this.restThreshold.Location = new System.Drawing.Point(616, 350);
+            this.restThreshold.Location = new System.Drawing.Point(450, 350);
             this.restThreshold.Name = "restThreshold";
             this.restThreshold.Size = new System.Drawing.Size(87, 20);
             this.restThreshold.TabIndex = 5;
@@ -109,8 +112,9 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(599, 221);
+            this.label6.Location = new System.Drawing.Point(433, 221);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(132, 12);
             this.label6.TabIndex = 30;
@@ -118,8 +122,9 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(599, 183);
+            this.label5.Location = new System.Drawing.Point(433, 183);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(94, 12);
             this.label5.TabIndex = 28;
@@ -127,6 +132,7 @@
             // 
             // quantizationMode
             // 
+            this.quantizationMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.quantizationMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.quantizationMode.FormattingEnabled = true;
             this.quantizationMode.Items.AddRange(new object[] {
@@ -137,7 +143,7 @@
             "3連・5連符と8分以下の付点なし",
             "グリッド単位",
             "制限なし"});
-            this.quantizationMode.Location = new System.Drawing.Point(681, 262);
+            this.quantizationMode.Location = new System.Drawing.Point(515, 262);
             this.quantizationMode.Name = "quantizationMode";
             this.quantizationMode.Size = new System.Drawing.Size(191, 20);
             this.quantizationMode.TabIndex = 7;
@@ -145,8 +151,9 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(611, 265);
+            this.label4.Location = new System.Drawing.Point(445, 265);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 12);
             this.label4.TabIndex = 26;
@@ -154,8 +161,9 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(709, 322);
+            this.label3.Location = new System.Drawing.Point(543, 322);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(163, 12);
             this.label3.TabIndex = 25;
@@ -163,6 +171,7 @@
             // 
             // fusion
             // 
+            this.fusion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fusion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.fusion.FormattingEnabled = true;
             this.fusion.Items.AddRange(new object[] {
@@ -173,7 +182,7 @@
             "128分音符",
             "256分音符",
             "単位時間"});
-            this.fusion.Location = new System.Drawing.Point(616, 319);
+            this.fusion.Location = new System.Drawing.Point(450, 319);
             this.fusion.Name = "fusion";
             this.fusion.Size = new System.Drawing.Size(87, 20);
             this.fusion.TabIndex = 4;
@@ -181,8 +190,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(743, 239);
+            this.label2.Location = new System.Drawing.Point(577, 239);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 12);
             this.label2.TabIndex = 23;
@@ -190,6 +200,7 @@
             // 
             // quantizationDivisor
             // 
+            this.quantizationDivisor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.quantizationDivisor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.quantizationDivisor.FormattingEnabled = true;
             this.quantizationDivisor.Items.AddRange(new object[] {
@@ -198,7 +209,7 @@
             "32分音符",
             "64分音符",
             "制限なし"});
-            this.quantizationDivisor.Location = new System.Drawing.Point(650, 236);
+            this.quantizationDivisor.Location = new System.Drawing.Point(484, 236);
             this.quantizationDivisor.Name = "quantizationDivisor";
             this.quantizationDivisor.Size = new System.Drawing.Size(87, 20);
             this.quantizationDivisor.TabIndex = 3;
@@ -206,8 +217,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(599, 72);
+            this.label1.Location = new System.Drawing.Point(433, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 12);
             this.label1.TabIndex = 19;
@@ -216,10 +228,14 @@
             // parts
             // 
             this.parts.AllowDrop = true;
+            this.parts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.parts.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.parts.Location = new System.Drawing.Point(12, 72);
             this.parts.Name = "parts";
             this.parts.SelectedIndex = 0;
-            this.parts.Size = new System.Drawing.Size(563, 633);
+            this.parts.Size = new System.Drawing.Size(397, 470);
             this.parts.TabIndex = 0;
             this.parts.SelectedIndexChanged += new System.EventHandler(this.parts_SelectedIndexChanged);
             this.parts.DragDrop += new System.Windows.Forms.DragEventHandler(this.parts_DragDrop);
@@ -232,7 +248,7 @@
             this.ヘルプToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(994, 26);
+            this.menuStrip1.Size = new System.Drawing.Size(828, 24);
             this.menuStrip1.TabIndex = 35;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -244,34 +260,34 @@
             this.プロジェクトを保存ToolStripMenuItem,
             this.終了QToolStripMenuItem});
             this.ファイルFToolStripMenuItem.Name = "ファイルFToolStripMenuItem";
-            this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(85, 22);
+            this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.ファイルFToolStripMenuItem.Text = "ファイル(&F)";
             // 
             // ファイルを開くOToolStripMenuItem
             // 
             this.ファイルを開くOToolStripMenuItem.Name = "ファイルを開くOToolStripMenuItem";
-            this.ファイルを開くOToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.ファイルを開くOToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.ファイルを開くOToolStripMenuItem.Text = "ファイルを開く(&O)...";
             this.ファイルを開くOToolStripMenuItem.Click += new System.EventHandler(this.ファイルを開くOToolStripMenuItem_Click);
             // 
             // 保存SToolStripMenuItem
             // 
             this.保存SToolStripMenuItem.Name = "保存SToolStripMenuItem";
-            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.保存SToolStripMenuItem.Text = "ABCファイルを保存(&S)...";
             this.保存SToolStripMenuItem.Click += new System.EventHandler(this.保存SToolStripMenuItem_Click);
             // 
             // プロジェクトを保存ToolStripMenuItem
             // 
             this.プロジェクトを保存ToolStripMenuItem.Name = "プロジェクトを保存ToolStripMenuItem";
-            this.プロジェクトを保存ToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.プロジェクトを保存ToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.プロジェクトを保存ToolStripMenuItem.Text = "ABCプロジェクトを保存(&S)...";
             this.プロジェクトを保存ToolStripMenuItem.Click += new System.EventHandler(this.プロジェクトを保存ToolStripMenuItem_Click);
             // 
             // 終了QToolStripMenuItem
             // 
             this.終了QToolStripMenuItem.Name = "終了QToolStripMenuItem";
-            this.終了QToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.終了QToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.終了QToolStripMenuItem.Text = "終了(&Q)";
             this.終了QToolStripMenuItem.Click += new System.EventHandler(this.終了QToolStripMenuItem_Click);
             // 
@@ -280,19 +296,20 @@
             this.ヘルプToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.バージョンン情報ToolStripMenuItem});
             this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
-            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(56, 22);
+            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.ヘルプToolStripMenuItem.Text = "ヘルプ";
             // 
             // バージョンン情報ToolStripMenuItem
             // 
             this.バージョンン情報ToolStripMenuItem.Name = "バージョンン情報ToolStripMenuItem";
-            this.バージョンン情報ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.バージョンン情報ToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.バージョンン情報ToolStripMenuItem.Text = "バージョン情報...";
             this.バージョンン情報ToolStripMenuItem.Click += new System.EventHandler(this.バージョンン情報ToolStripMenuItem_Click);
             // 
             // rebuild
             // 
-            this.rebuild.Location = new System.Drawing.Point(601, 445);
+            this.rebuild.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rebuild.Location = new System.Drawing.Point(435, 445);
             this.rebuild.Name = "rebuild";
             this.rebuild.Size = new System.Drawing.Size(94, 23);
             this.rebuild.TabIndex = 8;
@@ -304,9 +321,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.filesize});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 707);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 544);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(994, 23);
+            this.statusStrip1.Size = new System.Drawing.Size(828, 23);
             this.statusStrip1.TabIndex = 37;
             this.statusStrip1.Text = "ファイルサイズ: ";
             // 
@@ -322,8 +339,9 @@
             // 
             // optimizeWs
             // 
+            this.optimizeWs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.optimizeWs.AutoSize = true;
-            this.optimizeWs.Location = new System.Drawing.Point(616, 198);
+            this.optimizeWs.Location = new System.Drawing.Point(450, 198);
             this.optimizeWs.Name = "optimizeWs";
             this.optimizeWs.Size = new System.Drawing.Size(115, 16);
             this.optimizeWs.TabIndex = 2;
@@ -333,6 +351,7 @@
             // 
             // sessionMode
             // 
+            this.sessionMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.sessionMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sessionMode.FormattingEnabled = true;
             this.sessionMode.Items.AddRange(new object[] {
@@ -342,7 +361,7 @@
             "トリオ (メロディ+ドラム+パーカッション)",
             "セッション",
             "セッション (重複音をトラック分割)"});
-            this.sessionMode.Location = new System.Drawing.Point(601, 87);
+            this.sessionMode.Location = new System.Drawing.Point(435, 87);
             this.sessionMode.Name = "sessionMode";
             this.sessionMode.Size = new System.Drawing.Size(216, 20);
             this.sessionMode.TabIndex = 38;
@@ -367,6 +386,7 @@
             // 
             // velocity
             // 
+            this.velocity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.velocity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.velocity.FormattingEnabled = true;
             this.velocity.Items.AddRange(new object[] {
@@ -375,7 +395,7 @@
             "すごくいいかげん (20刻み)",
             "いいかげん (10刻み)",
             "正確に出力"});
-            this.velocity.Location = new System.Drawing.Point(601, 133);
+            this.velocity.Location = new System.Drawing.Point(435, 133);
             this.velocity.Name = "velocity";
             this.velocity.Size = new System.Drawing.Size(216, 20);
             this.velocity.TabIndex = 44;
@@ -383,8 +403,9 @@
             // 
             // label10
             // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(599, 118);
+            this.label10.Location = new System.Drawing.Point(433, 118);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(29, 12);
             this.label10.TabIndex = 43;
@@ -392,8 +413,9 @@
             // 
             // label8
             // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(611, 239);
+            this.label8.Location = new System.Drawing.Point(445, 239);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 12);
             this.label8.TabIndex = 45;
@@ -401,8 +423,9 @@
             // 
             // label11
             // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(878, 265);
+            this.label11.Location = new System.Drawing.Point(712, 265);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(33, 12);
             this.label11.TabIndex = 46;
@@ -410,8 +433,9 @@
             // 
             // label12
             // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(599, 300);
+            this.label12.Location = new System.Drawing.Point(433, 300);
             this.label12.Name = "label12";
             this.label12.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label12.Size = new System.Drawing.Size(95, 12);
@@ -420,7 +444,8 @@
             // 
             // testPlay
             // 
-            this.testPlay.Location = new System.Drawing.Point(601, 485);
+            this.testPlay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.testPlay.Location = new System.Drawing.Point(435, 485);
             this.testPlay.Name = "testPlay";
             this.testPlay.Size = new System.Drawing.Size(94, 23);
             this.testPlay.TabIndex = 48;
@@ -430,8 +455,9 @@
             // 
             // label13
             // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(614, 384);
+            this.label13.Location = new System.Drawing.Point(448, 384);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(101, 12);
             this.label13.TabIndex = 49;
@@ -439,12 +465,13 @@
             // 
             // shortNoteAdjustment
             // 
+            this.shortNoteAdjustment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.shortNoteAdjustment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.shortNoteAdjustment.FormattingEnabled = true;
             this.shortNoteAdjustment.Items.AddRange(new object[] {
             "切り捨てる",
             "64分音符にする"});
-            this.shortNoteAdjustment.Location = new System.Drawing.Point(721, 381);
+            this.shortNoteAdjustment.Location = new System.Drawing.Point(555, 381);
             this.shortNoteAdjustment.Name = "shortNoteAdjustment";
             this.shortNoteAdjustment.Size = new System.Drawing.Size(114, 20);
             this.shortNoteAdjustment.TabIndex = 50;
@@ -452,8 +479,9 @@
             // 
             // label14
             // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(638, 405);
+            this.label14.Location = new System.Drawing.Point(472, 405);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(251, 12);
             this.label14.TabIndex = 51;
@@ -464,7 +492,7 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(994, 730);
+            this.ClientSize = new System.Drawing.Size(828, 567);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.shortNoteAdjustment);
             this.Controls.Add(this.label13);
