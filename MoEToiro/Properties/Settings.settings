@@ -1,0 +1,39 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MoEToiro.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="saveTo" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="optimizeWs" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="quantizationDivisor" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">16</Value>
+    </Setting>
+    <Setting Name="fusionThreshold" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="quantizationMode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">QuantumStep</Value>
+    </Setting>
+    <Setting Name="restRemovalThreshold" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="restRemovalMode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AbsorbToLeadingNote</Value>
+    </Setting>
+    <Setting Name="partDivisionPolicy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Session</Value>
+    </Setting>
+    <Setting Name="openFrom" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="velocityKeepingPolicy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">None</Value>
+    </Setting>
+    <Setting Name="shortNoteAdjustment" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Discard</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
