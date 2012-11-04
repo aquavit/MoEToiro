@@ -1,9 +1,10 @@
 MoEToiro: A MIDI to Music Score Converter for MMORPG <a href="http://moepic.com">"Master of Epic"</a> 
-This software is implemented with Microsoft Visual C# 2010 (R) and requires .NET Framework (R) 4.0 or upper to run.
+This software is implemented with Microsoft Visual C# 2010 (R) and requires .NET Framework (R) 4.0 or later to run.
 
 As usual, the software is provided as-is, without any warranty; any use whatsoever purpose is at your own risk.
 
 Every piece of source code in this repository is (virtually) public domain unless otherwise explicitly stated: the contributors shall not claim royalties, acknowledgement or other rights on any form of reuse, redistribution or modification.  Nor shall the authors be responsible for any damages, losses or risks, including those potential ones, caused by such activities.
+
 AN EXPLICIT EXCEPTION: The code under MoEToiro/MidiLib directory originate from another open-source product and BSD 2-Clause license shall apply, see MoEToiro/MidiLib/LICENSE.txt for details.
 
 Contributors: Aquavit, airiell and "Kittens' Parlor"
