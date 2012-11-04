@@ -1,9 +1,4 @@
-﻿//  #2012.11.04.001 最小サイズを決めてみた
-//  #2012.11.04.002 タブ上に配置されるFlowLayoutPanelを消してみた
-//  #2012.11.04.003 タブ上のアンカー設定をしてみた（TextBox）
-//  #2012.11.04.004 タブ上のアンカー設定をしてみた（RichTextBox）
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -145,15 +140,10 @@ namespace MoEToiro
             }
             catch (Exception)
             {
-                MidiSequence.shortNoteAdjustment = MidiSequence.ShortNoteAdjustment.Adjust;
+                MidiSequence.shortNoteAdjustment = MidiSequence.ShortNoteAdjustment.Discard;
             }
             addTabPage("パート #1", "");
             updateControls();
-
-            //▼▼▼ ADD #2012.11.04.001 ▼▼▼
-            //最小サイズを初期表示サイズまでにする
-            this.MinimumSize = this.Size;
-            //▲▲▲ ADD #2012.11.04.001 ▲▲▲
 
         }
 
@@ -325,7 +315,7 @@ namespace MoEToiro
                     shortNoteAdjustment.SelectedIndex = 1;
                     break;
                 default:
-                    shortNoteAdjustment.SelectedIndex = 1;
+                    shortNoteAdjustment.SelectedIndex = 0;
                     break;
             }
         }
@@ -362,12 +352,9 @@ namespace MoEToiro
 
             FlowLayoutPanel panel = new FlowLayoutPanel();
             panel.FlowDirection = FlowDirection.TopDown;
+            p.Controls.Add(panel);
             panel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel.Dock = DockStyle.Fill;
-
-            //▼▼▼ DEL #2012.11.04.002 ▼▼▼
-            //p.Controls.Add(panel);
-            //▲▲▲ DEL #2012.11.04.002 ▲▲▲
 
             TextBox titletb = new TextBox();
             titletb.Name = "title";
@@ -376,24 +363,8 @@ namespace MoEToiro
             {
                 p.Text = titletb.Text;
             };
-
-
-            //▼▼▼ DEL #2012.11.04.003 ▼▼▼
-            //アンカー設定とか
-            //titletb.Width = panel.ClientSize.Width * 10 / 8;
-            //panel.Controls.Add(titletb);
-            //▲▲▲ DEL #2012.11.04.003 ▲▲▲
-
-            //▼▼▼ ADD #2012.11.04.003 ▼▼▼
-            //アンカー設定とか
-            titletb.Top = 4;
-            titletb.Left = 4;
-            titletb.Width = parts.ClientSize.Width - 16;
-            titletb.Anchor =  (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right);
-            p.Controls.Add(titletb);
-            //▲▲▲ ADD #2012.11.04.003 ▲▲▲
-            
-
+            titletb.Width = panel.ClientSize.Width * 10 / 8;
+            panel.Controls.Add(titletb);
 
             RichTextBox tb = new RichTextBox();
             tb.Name = "score";
@@ -405,24 +376,9 @@ namespace MoEToiro
             tb.AllowDrop = true;
             tb.DragEnter += Form1_DragEnter;
             tb.DragDrop += Form1_DragDrop;
+            panel.Controls.Add(tb);
 
-
-            //▼▼▼ DEL #2012.11.04.004 ▼▼▼
-            //アンカー設定とか
-            //tb.Size = new Size(panel.ClientSize.Width - 8, panel.ClientSize.Height - (titletb.Size.Height + 16)); 
-            //panel.Controls.Add(tb);
-            //▲▲▲ DEL #2012.11.04.004 ▲▲▲
-
-            //▼▼▼ ADD #2012.11.04.004 ▼▼▼
-            //アンカー設定とか
-            tb.Font = this.parts.Font;
-            tb.Top = 4 + titletb.Size.Height + 4;
-            tb.Left = 4;
-            tb.Width = parts.ClientSize.Width - 16;
-            tb.Height = parts.ClientSize.Height - ( 4 + 16 + titletb.Size.Height) ;
-            tb.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right); ;
-            p.Controls.Add(tb);
-            //▲▲▲ ADD #2012.11.04.004 ▲▲▲
+            tb.Size = new Size(panel.ClientSize.Width - 8, panel.ClientSize.Height - (titletb.Size.Height + 16)); ;
 
             return p;
         }
@@ -1003,12 +959,11 @@ namespace MoEToiro
                     s.shortNoteAdjustment = MidiSequence.ShortNoteAdjustment.Adjust.ToString();
                     break;
                 default:
-                    MidiSequence.shortNoteAdjustment = MidiSequence.ShortNoteAdjustment.Adjust;
-                    s.shortNoteAdjustment = MidiSequence.ShortNoteAdjustment.Adjust.ToString();
+                    MidiSequence.shortNoteAdjustment = MidiSequence.ShortNoteAdjustment.Discard;
+                    s.shortNoteAdjustment = MidiSequence.ShortNoteAdjustment.Discard.ToString();
                     break;
             }
 
         }
-
     }
 }

@@ -631,7 +631,7 @@ namespace Midi
             {
                 return new ScaleNote(parent, tick, this.scale, len, this.velocity, this.instrument, this.Channel);
             }
-            public virtual object Clone()
+            public object Clone()
             {
                 return MemberwiseClone();
             }
@@ -647,6 +647,8 @@ namespace Midi
             public override string purge(int qnt)
             {
                 int s = this.Scale;
+                // ↓関係ありました！
+                //// ドラムは音符長関係ない
                 string lensym = getLenCode(qnt);
 
                 string code = null;
@@ -740,7 +742,7 @@ namespace Midi
             {
                 return new DrumNote(parent, tick, this.Scale, len, this.Velocity, this.Instrument, this.Channel);
             }
-            public override object Clone()
+            public object Clone()
             {
                 return MemberwiseClone();
             }
@@ -839,7 +841,7 @@ namespace Midi
             {
                 return new PercussionNote(parent, tick, this.Scale, len, this.Velocity, this.Instrument, this.Channel);
             }
-            public override object Clone()
+            public object Clone()
             {
                 return MemberwiseClone();
             }
