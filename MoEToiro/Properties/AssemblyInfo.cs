@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MoEToiro")]
-[assembly: AssemblyCopyright("Copyright ©  2012 Aquavit and airiell. MIDI control core is attributed to (C) 2009 Yokaze Rue. All rights reserved (http://program.chrofieyue.net/)")]
+[assembly: AssemblyCopyright("Copyright ©  2012 あくあびっと, airiell, 猫の美容院. MIDI control core is attributed to (C) 2009 Yokaze Rue. All rights reserved (http://program.chrofieyue.net/)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,6 +33,6 @@ using System.Resources;
 // すべての値を指定するか、下のように '*' を使ってビルドおよびリビジョン番号を 
 // 既定値にすることができます:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.5.0")]
-[assembly: AssemblyFileVersion("1.0.5.0")]
+[assembly: AssemblyVersion("1.0.6.0")]
+[assembly: AssemblyFileVersion("1.0.6.0")]
 [assembly: NeutralResourcesLanguageAttribute("ja")]
