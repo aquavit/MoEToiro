@@ -955,7 +955,8 @@ namespace MoEToiro
                     s.velocityKeepingPolicy = MidiSequence.VelocityKeepingPolicy.None.ToString();
                     break;
             }
-
+            s.Save();
+            
         }
 
         private void testPlay_Click(object sender, EventArgs e)
@@ -1007,7 +1008,7 @@ namespace MoEToiro
                     s.shortNoteAdjustment = MidiSequence.ShortNoteAdjustment.Adjust.ToString();
                     break;
             }
-
+            s.Save();
         }
 
     }
