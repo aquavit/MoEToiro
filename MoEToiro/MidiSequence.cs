@@ -631,7 +631,7 @@ namespace Midi
             {
                 return new ScaleNote(parent, tick, this.scale, len, this.velocity, this.instrument, this.Channel);
             }
-            public object Clone()
+            public virtual object Clone()
             {
                 return MemberwiseClone();
             }
@@ -742,7 +742,7 @@ namespace Midi
             {
                 return new DrumNote(parent, tick, this.Scale, len, this.Velocity, this.Instrument, this.Channel);
             }
-            public object Clone()
+            public override object Clone()
             {
                 return MemberwiseClone();
             }
@@ -841,7 +841,7 @@ namespace Midi
             {
                 return new PercussionNote(parent, tick, this.Scale, len, this.Velocity, this.Instrument, this.Channel);
             }
-            public object Clone()
+            public override object Clone()
             {
                 return MemberwiseClone();
             }
