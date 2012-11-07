@@ -33,7 +33,7 @@
       <Value Profile="(Default)">None</Value>
     </Setting>
     <Setting Name="shortNoteAdjustment" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Discard</Value>
+      <Value Profile="(Default)">Adjust</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -260,34 +260,34 @@
             this.プロジェクトを保存ToolStripMenuItem,
             this.終了QToolStripMenuItem});
             this.ファイルFToolStripMenuItem.Name = "ファイルFToolStripMenuItem";
-            this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.ファイルFToolStripMenuItem.Text = "ファイル(&F)";
             // 
             // ファイルを開くOToolStripMenuItem
             // 
             this.ファイルを開くOToolStripMenuItem.Name = "ファイルを開くOToolStripMenuItem";
-            this.ファイルを開くOToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.ファイルを開くOToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.ファイルを開くOToolStripMenuItem.Text = "ファイルを開く(&O)...";
             this.ファイルを開くOToolStripMenuItem.Click += new System.EventHandler(this.ファイルを開くOToolStripMenuItem_Click);
             // 
             // 保存SToolStripMenuItem
             // 
             this.保存SToolStripMenuItem.Name = "保存SToolStripMenuItem";
-            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.保存SToolStripMenuItem.Text = "ABCファイルを保存(&S)...";
             this.保存SToolStripMenuItem.Click += new System.EventHandler(this.保存SToolStripMenuItem_Click);
             // 
             // プロジェクトを保存ToolStripMenuItem
             // 
             this.プロジェクトを保存ToolStripMenuItem.Name = "プロジェクトを保存ToolStripMenuItem";
-            this.プロジェクトを保存ToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.プロジェクトを保存ToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.プロジェクトを保存ToolStripMenuItem.Text = "ABCプロジェクトを保存(&S)...";
             this.プロジェクトを保存ToolStripMenuItem.Click += new System.EventHandler(this.プロジェクトを保存ToolStripMenuItem_Click);
             // 
             // 終了QToolStripMenuItem
             // 
             this.終了QToolStripMenuItem.Name = "終了QToolStripMenuItem";
-            this.終了QToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.終了QToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.終了QToolStripMenuItem.Text = "終了(&Q)";
             this.終了QToolStripMenuItem.Click += new System.EventHandler(this.終了QToolStripMenuItem_Click);
             // 
@@ -296,13 +296,13 @@
             this.ヘルプToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.バージョンン情報ToolStripMenuItem});
             this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
-            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.ヘルプToolStripMenuItem.Text = "ヘルプ";
             // 
             // バージョンン情報ToolStripMenuItem
             // 
             this.バージョンン情報ToolStripMenuItem.Name = "バージョンン情報ToolStripMenuItem";
-            this.バージョンン情報ToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.バージョンン情報ToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.バージョンン情報ToolStripMenuItem.Text = "バージョン情報...";
             this.バージョンン情報ToolStripMenuItem.Click += new System.EventHandler(this.バージョンン情報ToolStripMenuItem_Click);
             // 
@@ -319,11 +319,12 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.filesize});
             this.statusStrip1.Location = new System.Drawing.Point(0, 544);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(828, 23);
+            this.statusStrip1.Size = new System.Drawing.Size(1033, 23);
             this.statusStrip1.TabIndex = 37;
             this.statusStrip1.Text = "ファイルサイズ: ";
             // 
@@ -332,7 +333,7 @@
             this.filesize.AutoSize = false;
             this.filesize.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.filesize.Name = "filesize";
-            this.filesize.Size = new System.Drawing.Size(979, 18);
+            this.filesize.Size = new System.Drawing.Size(987, 18);
             this.filesize.Spring = true;
             this.filesize.Text = "ファイルサイズ:";
             this.filesize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
