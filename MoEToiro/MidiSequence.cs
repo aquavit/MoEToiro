@@ -380,7 +380,8 @@ namespace Midi
         public abstract class Note
         {
             private int startTick, len, channel;
-            private MidiTrack parent;
+            protected MidiTrack parent;
+            internal bool allowModify = true;
             public Note(MidiTrack parent, int tick, int len, int ch)
             {
                 this.parent = parent;
@@ -410,13 +411,21 @@ namespace Midi
             public int Length
             {
                 get { return this.len; }
-                set { this.len = value; }
+                set 
+                {
+                    Debug.Assert(this.allowModify);
+                    this.len = value; 
+                }
             }
             private int quantizedLength = -1;
             public int QuantizedLength
             {
                 get { return this.quantizedLength; }
-                set { this.quantizedLength = value; }
+                set 
+                {
+                    Debug.Assert(this.allowModify);
+                    this.quantizedLength = value; 
+                }
             }
 
             public int StartTick
@@ -486,10 +495,12 @@ namespace Midi
             private string forcedLencode = null;
             internal void forceLenCode(string c)
             {
+                Debug.Assert(this.allowModify);
                 forcedLencode = c;
             }
             internal void clearLenCode()
             {
+                Debug.Assert(this.allowModify);
                 forcedLencode = null;
             }
             public string getLenCode(int qnt)
@@ -515,12 +526,16 @@ namespace Midi
             }
             public override Note clone(MidiTrack parent, int tick, int len)
             {
-                return new DummyNote(parent, tick, len, this.Channel);
+                Note ret = new DummyNote(parent, tick, len, this.Channel);
+                ret.allowModify = true;
+                return ret;
             }
 
             public object Clone()
             {
-                return MemberwiseClone();
+                Note ret = (Note)MemberwiseClone();
+                ret.allowModify = true;
+                return ret;
             }
         }
         public class ScaleNote : Note, ICloneable
@@ -546,22 +561,38 @@ namespace Midi
             public int Instrument
             {
                 get { return this.instrument; }
-                set { this.instrument = value; }
+                set 
+                {
+                    Debug.Assert(this.allowModify);
+                    this.instrument = value; 
+                }
             }
             public int Velocity
             {
                 get { return this.velocity; }
-                set { this.velocity = value; }
+                set 
+                {
+                    Debug.Assert(this.allowModify);
+                    this.velocity = value; 
+                }
             }
             public int Scale
             {
                 get { return this.scale; }
-                set { this.scale = value; }
+                set 
+                {
+                    Debug.Assert(this.allowModify);
+                    this.scale = value; 
+                }
             }
             public bool Tie 
             {
                 get { return this.tie; }
-                set { this.tie = value; }
+                set 
+                {
+                    Debug.Assert(this.allowModify);
+                    this.tie = value;
+                }
             }
 
             internal string getScaleCode()
@@ -629,11 +660,15 @@ namespace Midi
             }
             public override Note clone(MidiTrack parent, int tick, int len)
             {
-                return new ScaleNote(parent, tick, this.scale, len, this.velocity, this.instrument, this.Channel);
+                Note ret = new ScaleNote(parent, tick, this.scale, len, this.velocity, this.instrument, this.Channel);
+                ret.allowModify = true;
+                return ret;
             }
             public virtual object Clone()
             {
-                return MemberwiseClone();
+                Note ret = (Note)MemberwiseClone();
+                ret.allowModify = true;
+                return ret;
             }
         }
 
@@ -740,11 +775,15 @@ namespace Midi
             }
             public override Note clone(MidiTrack parent, int tick, int len)
             {
-                return new DrumNote(parent, tick, this.Scale, len, this.Velocity, this.Instrument, this.Channel);
+                Note ret = new DrumNote(parent, tick, this.Scale, len, this.Velocity, this.Instrument, this.Channel);
+                ret.allowModify = true;
+                return ret;
             }
             public override object Clone()
             {
-                return MemberwiseClone();
+                Note ret = (Note)MemberwiseClone();
+                ret.allowModify = true;
+                return ret;
             }
         }
 
@@ -839,11 +878,15 @@ namespace Midi
             }
             public override Note clone(MidiTrack parent, int tick, int len)
             {
-                return new PercussionNote(parent, tick, this.Scale, len, this.Velocity, this.Instrument, this.Channel);
+                Note ret = new PercussionNote(parent, tick, this.Scale, len, this.Velocity, this.Instrument, this.Channel);
+                ret.allowModify = true;
+                return ret;
             }
             public override object Clone()
             {
-                return MemberwiseClone();
+                Note ret = (Note)MemberwiseClone();
+                ret.allowModify = true;
+                return ret;
             }
         }
 
@@ -864,11 +907,15 @@ namespace Midi
             }
             public override Note clone(MidiTrack parent, int tick, int len)
             {
-                return new RestNote(parent, tick, len, this.Channel);
+                Note ret = new RestNote(parent, tick, len, this.Channel);
+                ret.allowModify = true;
+                return ret;
             }
             public object Clone()
             {
-                return MemberwiseClone();
+                Note ret = (Note)MemberwiseClone();
+                ret.allowModify = true;
+                return ret;
             }
         }
 
@@ -889,11 +936,15 @@ namespace Midi
             }
             public override Note clone(MidiTrack parent, int tick, int len)
             {
-                return new TempoChangeNote(parent, tick, this.tempo, this.Channel);
+                Note ret = new TempoChangeNote(parent, tick, this.tempo, this.Channel);
+                ret.allowModify = true;
+                return ret;
             }
             public object Clone()
             {
-                return MemberwiseClone();
+                Note ret = (Note)MemberwiseClone();
+                ret.allowModify = true;
+                return ret;
             }
         }
 
@@ -915,11 +966,15 @@ namespace Midi
             }
             public override Note clone(MidiTrack parent, int tick, int len)
             {
-                return new VolumeNote(parent, tick, this.value, this.Channel);
+                Note ret =  new VolumeNote(parent, tick, this.value, this.Channel);
+                ret.allowModify = true;
+                return ret;
             }
             public object Clone()
             {
-                return MemberwiseClone();
+                Note ret = (Note)MemberwiseClone();
+                ret.allowModify = true;
+                return ret;
             }
         }
 
@@ -1058,6 +1113,7 @@ namespace Midi
             {
                 get { return parent; }
             }
+
             public MidiTrack(int n, FileStream fs, MidiSequence parent)
             {
                 this.parent = parent;
@@ -1092,13 +1148,19 @@ namespace Midi
                 }
                 this.moeABCPart = new MoEABCScore.MoEABCPart(this.Instrument, this.InstrumentName, c);
                 moeABCPart = new MoEABCScore.MoEABCPart(this.Instrument, this.InstrumentName, c);
+
+                // これ以降、各Noteの変更を禁止
+                foreach (Note nt in notes)
+                {
+                    nt.allowModify = false;
+                }
             }
 
             public MidiTrack(MidiTrack source)
             {
                 this.parent = source.parent;
                 this.trackNumber = source.TrackNumber;
-                this.notes = new List<Note>(source.notes);
+                this.notes = new List<Note>(source.notes.Select((n) => n.clone(this, n.StartTick, n.Length)));
                 this.Instrument = source.Instrument;
                 this.InstrumentName = source.InstrumentName;
                 this.Title = source.Title;
@@ -1115,7 +1177,7 @@ namespace Midi
             public MidiTrack(int p, List<Note> notes, MidiSequence midiSequence)
             {
                 this.trackNumber = p;
-                this.notes = new List<Note>(notes);
+                this.notes = new List<Note>(notes.Select((n) => n.clone(this, n.StartTick, n.Length)));
                 this.parent = midiSequence;
                 this.representativeInstrument = 0;
                 int c = 0;
@@ -2247,7 +2309,7 @@ namespace Midi
                 {
                     filter_ = filter;
                 }
-                this.notes = this.notes.Concat(track.notes.Where(filter_)).ToList();
+                this.notes = this.notes.Concat(track.notes.Where(filter_).Select((n) => n.clone(this, n.StartTick, n.Length))).ToList();
 
             }
             internal virtual void filter(Func<Note, bool> filter)
@@ -2362,6 +2424,7 @@ namespace Midi
                 for (int i = 1; i <= this.properties.TrackCount; i++)
                 {
                     MidiTrack trk = new MidiTrack(i, fs, this);
+            
                     this.physicalTracks.Add(trk);
 //                    if (defaultTempo == 0)
 //                        defaultTempo = trk.Tempo;
@@ -2381,7 +2444,7 @@ namespace Midi
             MidiTrack conductor = null;
             if (this.properties.Format == 0)
             {
-                this.tracks.Add(this.physicalTracks[0]);
+                this.tracks.Add(new MidiTrack(this.physicalTracks[0]));
             }
             else
             {
