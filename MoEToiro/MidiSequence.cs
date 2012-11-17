@@ -325,6 +325,7 @@ namespace Midi
         public static int quantizationDivisor = 16;  // Quantization の単位となる拍数: 4 = 16分音符 8 = 32分音符 16 = 64分音符 ...
         public static int fusionThreshold = 0;     // 2つ以上の音色を和音としてまとめる閾値の拍数: 0 = 単位時間, 4 = 1/16, 8 = 1/32, 16 = 1/64, ...
         public static bool optimizeWs = false; // true => 空白除去
+        public static bool reflectPedalSustantion = true; // true => Sustain Pedal を変換に反映
         // 以下はもう使わない
 //        public static bool optimizeLen = false; // true => 音符長の最頻値に合わせてテンポ調整
 //        public static bool splitTrack = false; // true => 音の重なる部分を別トラックに分割
@@ -1207,6 +1208,7 @@ namespace Midi
                 const int MAX_MIDI_CH = 16;
                 const int NUM_SCALE = 128;
                 int[,] startTickTable = new int[MAX_MIDI_CH,NUM_SCALE];
+                bool[,] sustentionStateTable = new bool[MAX_MIDI_CH, NUM_SCALE];
 
                 int[] instruments = new int[MAX_MIDI_CH];
                 
@@ -1216,6 +1218,7 @@ namespace Midi
                     for (int j = 0; j < NUM_SCALE; j++) 
                     {
                         startTickTable[i,j] = -1;
+                        sustentionStateTable[i, j] = false;
                     }
                 }
 
@@ -1245,6 +1248,9 @@ namespace Midi
 
                 Func<bool> parseEvent = null;
                 int velocity = 100;
+
+                bool pedalSastaining = false;
+
                 parseEvent = () =>
                 {
 
@@ -1265,38 +1271,119 @@ namespace Midi
                             // Note Off
                             checkParam();
                             int startTick = startTickTable[ch, param1];
-                            if (startTick >= 0)
+                            if (startTick >= 0 && !(reflectPedalSustantion && sustentionStateTable[ch,param1]))
                             {
                                 notes.Add(allocNote(startTick, param1, tick - startTick, velocity, instruments[ch], ch));
+#if DEBUG
+                                System.Console.WriteLine("Note Added 1:" + tick + ", " + ch + ", " + param1);
+#endif
                                 startTickTable[ch, param1] = -1;
+                                sustentionStateTable[ch, param1] = false;
                             }
-
+#if DEBUG
+                            if ((reflectPedalSustantion && sustentionStateTable[ch, param1]))
+                            {
+                                System.Console.WriteLine("Suspending: " + tick + ", " + ch + ", " + param1);
+                            }
+#endif
                         }
                         else if (command == 0x90)
                         {
+                            // Note On
+
+                            if (reflectPedalSustantion && sustentionStateTable[ch, param1])
+                            {
+                                checkParam();
+                                int startTick = startTickTable[ch, param1];
+                                if (startTick >= 0)
+                                {
+                                    notes.Add(allocNote(startTick, param1, tick - startTick, velocity, instruments[ch], ch));
+#if DEBUG
+                                    System.Console.WriteLine("Note Added 2:" + tick + ", " + ch + ", " + param1);
+#endif
+                                }
+                            }
                             startTickTable[ch, param1] = tick;
+                            sustentionStateTable[ch, param1] = pedalSastaining;
                             velocity = Math.Min(127, Math.Max(param2, 0));
                         }
-                        else if (command == 0xB0 && (param1 == 120 || param1 == 123))
+                        else if (command == 0xB0)
                         {
-                            // All sounds/notes off
-                            for (int chnl = 0; chnl < MAX_MIDI_CH; chnl++)
+                            // Control change
+                            if (param1 == 120 || param1 == 123)
                             {
-                                for (int scale = 0; scale < NUM_SCALE; scale++)
+                                // All sounds/notes off
+                                for (int chnl = 0; chnl < MAX_MIDI_CH; chnl++)
                                 {
-                                    int startTick = startTickTable[chnl, scale];
-                                    if (startTick >= 0)
+                                    for (int scale = 0; scale < NUM_SCALE; scale++)
                                     {
-                                        notes.Add(allocNote(startTick, scale, tick - startTick, velocity, instruments[ch], ch));
-                                        startTickTable[chnl, scale] = -1;
+                                        int startTick = startTickTable[chnl, scale];
+                                        if (startTick >= 0)
+                                        {
+                                            notes.Add(allocNote(startTick, scale, tick - startTick, velocity, instruments[chnl], chnl));
+#if DEBUG
+                                            System.Console.WriteLine("Note Added 3:" + tick + ", " + chnl + ", " + scale);
+#endif
+                                            startTickTable[chnl, scale] = -1;
+                                            sustentionStateTable[chnl, scale] = false;
+                                        }
                                     }
                                 }
                             }
-                        }
-                        else if (command == 0xB0 && param1 == 0x07)
-                        {
-                            // Volume
-                            notes.Add(new VolumeNote(this, tick, param2, ch));
+                            else if (param1 == 0x07)
+                            {
+                                // Volume
+                                notes.Add(new VolumeNote(this, tick, param2, ch));
+
+                            }
+                            else if (param1 == 64)
+                            {
+                                // Sustain pedal
+                                bool prevState = pedalSastaining;
+                                pedalSastaining = (param2 >= 64);
+                                if (prevState == false && pedalSastaining == true)
+                                {
+                                    // Mark currently ringing notes as sustained
+                                    for (int chnl = 0; chnl < MAX_MIDI_CH; chnl++)
+                                    {
+                                        for (int scale = 0; scale < NUM_SCALE; scale++)
+                                        {
+                                            int startTick = startTickTable[chnl, scale];
+                                            if (startTick >= 0)
+                                            {
+#if DEBUG
+                                                System.Console.WriteLine("Suspend:" + tick + ", " + chnl + ", " + scale);
+#endif
+                                                sustentionStateTable[chnl, scale] = true;
+                                            }
+                                        }
+                                    }
+                                }
+                                if (prevState == true && pedalSastaining == false)
+                                {
+                                    // All pending notes off
+                                    for (int chnl = 0; chnl < MAX_MIDI_CH; chnl++)
+                                    {
+                                        for (int scale = 0; scale < NUM_SCALE; scale++)
+                                        {
+                                            if (sustentionStateTable[chnl, scale])
+                                            {
+                                                int startTick = startTickTable[chnl, scale];
+                                                if (startTick >= 0)
+                                                {
+                                                    notes.Add(allocNote(startTick, scale, tick - startTick, velocity, instruments[chnl], chnl));
+#if DEBUG
+                                                    System.Console.WriteLine("Note Added 4:" + tick + ", " + chnl + ", " + scale);
+#endif
+                                                    startTickTable[chnl, scale] = -1;
+                                                    sustentionStateTable[chnl, scale] = false;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
                         }
                         else if (command == 0xC0)
                         {
@@ -1422,6 +1509,20 @@ namespace Midi
                     }
                 }
 
+                // All pending sounds/notes off
+                for (int chnl = 0; chnl < MAX_MIDI_CH; chnl++)
+                {
+                    for (int scale = 0; scale < NUM_SCALE; scale++)
+                    {
+                        int startTick = startTickTable[chnl, scale];
+                        if (startTick >= 0)
+                        {
+                            notes.Add(allocNote(startTick, scale, tick - startTick, velocity, instruments[chnl], chnl));
+                            startTickTable[chnl, scale] = -1;
+                            sustentionStateTable[chnl, scale] = false;
+                        }
+                    }
+                }
             }
 
             private static void quantizeLength(Note t, int qnt)
