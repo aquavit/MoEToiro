@@ -35,5 +35,8 @@
     <Setting Name="shortNoteAdjustment" Type="System.String" Scope="User">
       <Value Profile="(Default)">Adjust</Value>
     </Setting>
+    <Setting Name="reflectPedalSuspention" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

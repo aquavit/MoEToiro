@@ -36,6 +36,8 @@ namespace MoEToiro
         private string batchSave = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "もえといろ");
         private MidiSequence currentMidiFile = null;
         private MoEABCScore.MoEABCScore currentScore = null;
+        private bool reparseNeeded = false; // true => 再計算をMIDIファイルの読み込みからやる
+
         private void ファイルを開くOToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Properties.Settings s = Properties.Settings.Default;
@@ -146,6 +148,14 @@ namespace MoEToiro
             catch (Exception)
             {
                 MidiSequence.shortNoteAdjustment = MidiSequence.ShortNoteAdjustment.Adjust;
+            }
+            try
+            {
+                MidiSequence.reflectPedalSustantion = s.reflectPedalSuspention;
+            }
+            catch (Exception)
+            {
+                MidiSequence.reflectPedalSustantion = false;
             }
             addTabPage("パート #1", "");
             updateControls();
@@ -328,6 +338,8 @@ namespace MoEToiro
                     shortNoteAdjustment.SelectedIndex = 1;
                     break;
             }
+
+            reflectPedalSustention.Checked = MidiSequence.reflectPedalSustantion;
         }
 
         private string makeTitle(MidiSequence.MidiTrack track)
@@ -499,6 +511,12 @@ namespace MoEToiro
 
         private void rebuild_Click(object sender, EventArgs e)
         {
+            if (reparseNeeded)
+            {
+                openFile(currentMidiFile.FileName);
+                reparseNeeded = false;
+                return;
+            }
             doRebuild();
         }
 
@@ -1009,6 +1027,16 @@ namespace MoEToiro
                     break;
             }
             s.Save();
+        }
+
+        private void reflectPedalSustention_CheckedChanged(object sender, EventArgs e)
+        {
+            MidiSequence.reflectPedalSustantion = reflectPedalSustention.Checked;
+
+            Properties.Settings s = Properties.Settings.Default;
+            s.reflectPedalSuspention = MidiSequence.reflectPedalSustantion;
+            s.Save();
+            reparseNeeded = true;
         }
 
     }

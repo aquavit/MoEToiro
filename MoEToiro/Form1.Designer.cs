@@ -65,6 +65,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.shortNoteAdjustment = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.reflectPedalSustention = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -77,7 +78,7 @@
             this.restAbsorption.Items.AddRange(new object[] {
             "直前の音のテヌートに変換",
             "消去する"});
-            this.restAbsorption.Location = new System.Drawing.Point(621, 350);
+            this.restAbsorption.Location = new System.Drawing.Point(621, 406);
             this.restAbsorption.Name = "restAbsorption";
             this.restAbsorption.Size = new System.Drawing.Size(170, 20);
             this.restAbsorption.TabIndex = 6;
@@ -87,7 +88,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(543, 353);
+            this.label7.Location = new System.Drawing.Point(543, 409);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 12);
             this.label7.TabIndex = 32;
@@ -104,7 +105,7 @@
             "32分音符",
             "64分音符",
             "単位時間"});
-            this.restThreshold.Location = new System.Drawing.Point(450, 350);
+            this.restThreshold.Location = new System.Drawing.Point(450, 406);
             this.restThreshold.Name = "restThreshold";
             this.restThreshold.Size = new System.Drawing.Size(87, 20);
             this.restThreshold.TabIndex = 5;
@@ -163,7 +164,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(543, 322);
+            this.label3.Location = new System.Drawing.Point(543, 378);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(163, 12);
             this.label3.TabIndex = 25;
@@ -182,7 +183,7 @@
             "128分音符",
             "256分音符",
             "単位時間"});
-            this.fusion.Location = new System.Drawing.Point(450, 319);
+            this.fusion.Location = new System.Drawing.Point(450, 375);
             this.fusion.Name = "fusion";
             this.fusion.Size = new System.Drawing.Size(87, 20);
             this.fusion.TabIndex = 4;
@@ -235,7 +236,7 @@
             this.parts.Location = new System.Drawing.Point(12, 72);
             this.parts.Name = "parts";
             this.parts.SelectedIndex = 0;
-            this.parts.Size = new System.Drawing.Size(397, 470);
+            this.parts.Size = new System.Drawing.Size(397, 505);
             this.parts.TabIndex = 0;
             this.parts.SelectedIndexChanged += new System.EventHandler(this.parts_SelectedIndexChanged);
             this.parts.DragDrop += new System.Windows.Forms.DragEventHandler(this.parts_DragDrop);
@@ -309,7 +310,7 @@
             // rebuild
             // 
             this.rebuild.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rebuild.Location = new System.Drawing.Point(435, 445);
+            this.rebuild.Location = new System.Drawing.Point(435, 499);
             this.rebuild.Name = "rebuild";
             this.rebuild.Size = new System.Drawing.Size(94, 23);
             this.rebuild.TabIndex = 8;
@@ -323,9 +324,9 @@
             this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.filesize});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 544);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 579);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1041, 23);
+            this.statusStrip1.Size = new System.Drawing.Size(2583, 23);
             this.statusStrip1.TabIndex = 37;
             this.statusStrip1.Text = "ファイルサイズ: ";
             // 
@@ -334,7 +335,7 @@
             this.filesize.AutoSize = false;
             this.filesize.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.filesize.Name = "filesize";
-            this.filesize.Size = new System.Drawing.Size(987, 18);
+            this.filesize.Size = new System.Drawing.Size(2568, 18);
             this.filesize.Spring = true;
             this.filesize.Text = "ファイルサイズ:";
             this.filesize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -437,7 +438,7 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(433, 300);
+            this.label12.Location = new System.Drawing.Point(433, 356);
             this.label12.Name = "label12";
             this.label12.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label12.Size = new System.Drawing.Size(95, 12);
@@ -447,7 +448,7 @@
             // testPlay
             // 
             this.testPlay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.testPlay.Location = new System.Drawing.Point(435, 485);
+            this.testPlay.Location = new System.Drawing.Point(435, 539);
             this.testPlay.Name = "testPlay";
             this.testPlay.Size = new System.Drawing.Size(94, 23);
             this.testPlay.TabIndex = 48;
@@ -459,7 +460,7 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(448, 384);
+            this.label13.Location = new System.Drawing.Point(448, 440);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(101, 12);
             this.label13.TabIndex = 49;
@@ -473,7 +474,7 @@
             this.shortNoteAdjustment.Items.AddRange(new object[] {
             "切り捨てる",
             "64分音符にする"});
-            this.shortNoteAdjustment.Location = new System.Drawing.Point(555, 381);
+            this.shortNoteAdjustment.Location = new System.Drawing.Point(555, 437);
             this.shortNoteAdjustment.Name = "shortNoteAdjustment";
             this.shortNoteAdjustment.Size = new System.Drawing.Size(114, 20);
             this.shortNoteAdjustment.TabIndex = 50;
@@ -483,18 +484,30 @@
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(472, 405);
+            this.label14.Location = new System.Drawing.Point(472, 461);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(251, 12);
             this.label14.TabIndex = 51;
             this.label14.Text = "※「音符の長さをグリッド単位に」した場合にだけ有効";
+            // 
+            // reflectPedalSustention
+            // 
+            this.reflectPedalSustention.AutoSize = true;
+            this.reflectPedalSustention.Location = new System.Drawing.Point(447, 288);
+            this.reflectPedalSustention.Name = "reflectPedalSustention";
+            this.reflectPedalSustention.Size = new System.Drawing.Size(159, 16);
+            this.reflectPedalSustention.TabIndex = 52;
+            this.reflectPedalSustention.Text = "ホールド・ペダルを有効にする";
+            this.reflectPedalSustention.UseVisualStyleBackColor = true;
+            this.reflectPedalSustention.CheckedChanged += new System.EventHandler(this.reflectPedalSustention_CheckedChanged);
             // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(828, 567);
+            this.ClientSize = new System.Drawing.Size(828, 602);
+            this.Controls.Add(this.reflectPedalSustention);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.shortNoteAdjustment);
             this.Controls.Add(this.label13);
@@ -578,6 +591,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox shortNoteAdjustment;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.CheckBox reflectPedalSustention;
     }
 }
 

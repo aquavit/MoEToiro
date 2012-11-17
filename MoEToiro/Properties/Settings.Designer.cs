@@ -154,5 +154,17 @@ namespace MoEToiro.Properties {
                 this["shortNoteAdjustment"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool reflectPedalSuspention {
+            get {
+                return ((bool)(this["reflectPedalSuspention"]));
+            }
+            set {
+                this["reflectPedalSuspention"] = value;
+            }
+        }
     }
 }
