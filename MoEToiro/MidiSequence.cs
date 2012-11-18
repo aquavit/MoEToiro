@@ -1129,17 +1129,7 @@ namespace Midi
                     throwEofException();
 
                 Func<int, int, int, int, int, int, Note> allocNote;
-                // トラック番号じゃなくてチャンネルで判定した方が正しいらしい？ので下はなかったことに
-                //if (n == 10)
-                //{
-                //    // トラック10番は打楽器とみなして、ストリーム解析にフックをかける。
-                //    // 直接 new DrumNote()/PercussionNote() ではなく、チャンネルを強制的に10番にする。
-                //    allocNote = (start, scale, len, vel, inst, ch) => new ScaleNote(start, scale, len, vel, inst, 10);
-                //}
-                //else
-                //{
                 allocNote = (start, scale, len, vel, inst, ch) => new ScaleNote(this, start, scale, len, vel, inst, ch);
-                //}
                 parse(data, allocNote);
                 int c = 0;
                 foreach (Note nt in notes.Where((nt) => nt is ScaleNote))
@@ -1195,11 +1185,8 @@ namespace Midi
                 throw new Exception("Unexpected End-of-File at track " + this.TrackNumber.ToString());
             }
 
-//            private int latestStartTick = 0;
-//            private int numNotes = 0;
             private void parse(byte[] data, Func<int, int, int, int, int, int, Note> allocNote)
             {
-//                int instrument = 0;
                 int index = 0;
                 int tick = 0;
 
@@ -1304,7 +1291,7 @@ namespace Midi
                                 }
                             }
                             startTickTable[ch, param1] = tick;
-                            sustentionStateTable[ch, param1] = pedalSastaining;
+                            sustentionStateTable[ch, param1] = pedalSastaining && reflectPedalSustantion;
                             velocity = Math.Min(127, Math.Max(param2, 0));
                         }
                         else if (command == 0xB0)
@@ -1336,11 +1323,11 @@ namespace Midi
                                 notes.Add(new VolumeNote(this, tick, param2, ch));
 
                             }
-                            else if (param1 == 64)
+                            else if ((param1 == 64 || param1 == 66) && reflectPedalSustantion)
                             {
-                                // Sustain pedal
+                                // Sustain pedal (64) / Sostenuto (66)
                                 bool prevState = pedalSastaining;
-                                pedalSastaining = (param2 >= 64);
+                                pedalSastaining = param2 >= 64;
                                 if (prevState == false && pedalSastaining == true)
                                 {
                                     // Mark currently ringing notes as sustained
@@ -1382,6 +1369,8 @@ namespace Midi
                                         }
                                     }
                                 }
+                                // Sustention continues iff CC event is 64
+                                pedalSastaining = pedalSastaining && (param1 == 64);
                             }
 
                         }
