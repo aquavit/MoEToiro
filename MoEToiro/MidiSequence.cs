@@ -1195,6 +1195,7 @@ namespace Midi
                 const int MAX_MIDI_CH = 16;
                 const int NUM_SCALE = 128;
                 int[,] startTickTable = new int[MAX_MIDI_CH,NUM_SCALE];
+                bool[,] noteOnStateTable = new bool[MAX_MIDI_CH, NUM_SCALE];
                 bool[,] sustentionStateTable = new bool[MAX_MIDI_CH, NUM_SCALE];
 
                 int[] instruments = new int[MAX_MIDI_CH];
@@ -1206,6 +1207,7 @@ namespace Midi
                     {
                         startTickTable[i,j] = -1;
                         sustentionStateTable[i, j] = false;
+                        noteOnStateTable[i, j] = false;
                     }
                 }
 
@@ -1267,6 +1269,7 @@ namespace Midi
                                 startTickTable[ch, param1] = -1;
                                 sustentionStateTable[ch, param1] = false;
                             }
+                            noteOnStateTable[ch, param1] = false;
 #if DEBUG
                             if ((reflectPedalSustantion && sustentionStateTable[ch, param1]))
                             {
@@ -1292,6 +1295,7 @@ namespace Midi
                             }
                             startTickTable[ch, param1] = tick;
                             sustentionStateTable[ch, param1] = pedalSastaining && reflectPedalSustantion;
+                            noteOnStateTable[ch, param1] = true;
                             velocity = Math.Min(127, Math.Max(param2, 0));
                         }
                         else if (command == 0xB0)
@@ -1353,7 +1357,7 @@ namespace Midi
                                     {
                                         for (int scale = 0; scale < NUM_SCALE; scale++)
                                         {
-                                            if (sustentionStateTable[chnl, scale])
+                                            if (sustentionStateTable[chnl, scale] && !noteOnStateTable[chnl, scale])
                                             {
                                                 int startTick = startTickTable[chnl, scale];
                                                 if (startTick >= 0)
