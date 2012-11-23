@@ -326,7 +326,7 @@
             this.filesize});
             this.statusStrip1.Location = new System.Drawing.Point(0, 579);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(2583, 23);
+            this.statusStrip1.Size = new System.Drawing.Size(2631, 23);
             this.statusStrip1.TabIndex = 37;
             this.statusStrip1.Text = "ファイルサイズ: ";
             // 
@@ -335,7 +335,7 @@
             this.filesize.AutoSize = false;
             this.filesize.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.filesize.Name = "filesize";
-            this.filesize.Size = new System.Drawing.Size(2568, 18);
+            this.filesize.Size = new System.Drawing.Size(2616, 18);
             this.filesize.Spring = true;
             this.filesize.Text = "ファイルサイズ:";
             this.filesize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -492,6 +492,7 @@
             // 
             // reflectPedalSustention
             // 
+            this.reflectPedalSustention.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.reflectPedalSustention.AutoSize = true;
             this.reflectPedalSustention.Location = new System.Drawing.Point(447, 288);
             this.reflectPedalSustention.Name = "reflectPedalSustention";
