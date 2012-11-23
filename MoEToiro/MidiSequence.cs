@@ -1264,7 +1264,7 @@ namespace Midi
                             {
                                 notes.Add(allocNote(startTick, param1, tick - startTick, velocity, instruments[ch], ch));
 #if DEBUG
-                                System.Console.WriteLine("Note Added 1:" + tick + ", " + ch + ", " + param1);
+//                                System.Console.WriteLine("Note Added 1:" + startTick + "-" + tick + ", " + ch + ", " + param1);
 #endif
                                 startTickTable[ch, param1] = -1;
                                 sustentionStateTable[ch, param1] = false;
@@ -1273,7 +1273,7 @@ namespace Midi
 #if DEBUG
                             if ((reflectPedalSustantion && sustentionStateTable[ch, param1]))
                             {
-                                System.Console.WriteLine("Suspending: " + tick + ", " + ch + ", " + param1);
+//                                System.Console.WriteLine("Suspending: " + tick + ", " + ch + ", " + param1);
                             }
 #endif
                         }
@@ -1289,7 +1289,7 @@ namespace Midi
                                 {
                                     notes.Add(allocNote(startTick, param1, tick - startTick, velocity, instruments[ch], ch));
 #if DEBUG
-                                    System.Console.WriteLine("Note Added 2:" + tick + ", " + ch + ", " + param1);
+                            System.Console.WriteLine("Note Added 2:" + startTick + "-" + tick + ", " + ch + ", " + param1);
 #endif
                                 }
                             }
@@ -1313,7 +1313,7 @@ namespace Midi
                                         {
                                             notes.Add(allocNote(startTick, scale, tick - startTick, velocity, instruments[chnl], chnl));
 #if DEBUG
-                                            System.Console.WriteLine("Note Added 3:" + tick + ", " + chnl + ", " + scale);
+//                                            System.Console.WriteLine("Note Added 3:" + startTick + "-" + tick + ", " + ch + ", " + param1);
 #endif
                                             startTickTable[chnl, scale] = -1;
                                             sustentionStateTable[chnl, scale] = false;
@@ -1339,11 +1339,11 @@ namespace Midi
                                     {
                                         for (int scale = 0; scale < NUM_SCALE; scale++)
                                         {
-                                            int startTick = startTickTable[chnl, scale];
-                                            if (startTick >= 0)
+                                            //int startTick = startTickTable[chnl, scale];
+                                            if (noteOnStateTable[chnl, scale])
                                             {
 #if DEBUG
-                                                System.Console.WriteLine("Suspend:" + tick + ", " + chnl + ", " + scale);
+//                                                System.Console.WriteLine("Suspend:" + tick + ", " + chnl + ", " + scale);
 #endif
                                                 sustentionStateTable[chnl, scale] = true;
                                             }
@@ -1357,19 +1357,19 @@ namespace Midi
                                     {
                                         for (int scale = 0; scale < NUM_SCALE; scale++)
                                         {
-                                            if (sustentionStateTable[chnl, scale] && !noteOnStateTable[chnl, scale])
+                                            if (!noteOnStateTable[chnl, scale])
                                             {
                                                 int startTick = startTickTable[chnl, scale];
                                                 if (startTick >= 0)
                                                 {
                                                     notes.Add(allocNote(startTick, scale, tick - startTick, velocity, instruments[chnl], chnl));
 #if DEBUG
-                                                    System.Console.WriteLine("Note Added 4:" + tick + ", " + chnl + ", " + scale);
+//                                                    System.Console.WriteLine("Note Added 4:" + startTick + "-" + tick + ", " + ch + ", " + param1);
 #endif
                                                     startTickTable[chnl, scale] = -1;
-                                                    sustentionStateTable[chnl, scale] = false;
                                                 }
                                             }
+                                            sustentionStateTable[chnl, scale] = false;
                                         }
                                     }
                                 }
@@ -1411,6 +1411,9 @@ namespace Midi
                             for (int i = 0; i < MAX_MIDI_CH; i++)
                             {
                                 notes.Add(new TempoChangeNote(this, tick, tempo, i));
+#if DEBUG
+                                System.Console.WriteLine("Tempo:" + tempo + " at " + tick);
+#endif
                             }
                         }
                         else if (type == 0x03) 
@@ -2096,6 +2099,7 @@ namespace Midi
 //                    Debug.Assert(v.Count > 0);
                     List<Note> vol = table[startTick].Where((t) => t is VolumeNote).ToList();
                     List<Note> tempoChange = table[startTick].Where((t) => t is TempoChangeNote).ToList();
+                    tempoChange.Sort((t1, t2) => ((TempoChangeNote)t1).Tempo.CompareTo(((TempoChangeNote)t2).Tempo));
                     if (tempoChange.Count >= 1) {
                         int prevTempo = tempo;
                         // 同じタイミングで2個以上テンポ変化があったら？知らん！
@@ -2105,6 +2109,9 @@ namespace Midi
                         {
                             int val = getBpm(tempo);
                             sb.Append("<Q:" + val + ">");
+#if DEBUG
+                            System.Console.WriteLine("Tempo out:" + val + " at " + startTick);
+#endif
                             moeAbcTrack.addNote(new MoEABCScore.MoEABCTempoNote(val));
                         }
                     }
@@ -2189,14 +2196,16 @@ namespace Midi
                         string s = String.Join("", v.Select((t) => t.purge(qnt)));
                         if (!s.Equals(""))
                         {
-                            sb.Append('[');
-                            sb.Append(s);
-                            sb.Append(']');
+                            //sb.Append('[');
+                            //sb.Append(s);
+                            //sb.Append(']');
+                            string vstr = "[" + s + "]";
                             Tuple<int, int> p;
                             if (chordLen != null)
                             {
                                 p = Note.parseLenCode(chordLen);
-                                sb.Append(chordLen);
+                                vstr += chordLen;
+//                                sb.Append(chordLen);
                             }
                             else
                             {
@@ -2209,6 +2218,11 @@ namespace Midi
                             }).ToList();
                             MoEABCScore.MoEABCChordNote cn = new MoEABCScore.MoEABCChordNote(p.Item1, p.Item2, sns);
                             moeAbcTrack.addNote(cn);
+
+                            sb.Append(vstr);
+#if DEBUG
+//                            System.Console.WriteLine("REST = " + rest + "(" + startTick + ", " + vstr + ")");
+#endif
                         }
                     }
                     else if (v.Count > 0)
@@ -2222,6 +2236,9 @@ namespace Midi
                             int s = ((ScaleNote)v[0]).Scale;
                             string sn = ((ScaleNote)v[0]).getScaleCode();
                             moeAbcTrack.addNote(new MoEABCScore.MoEABCScaleNote(p.Item1, p.Item2, s, sn, ((ScaleNote)v[0]).Tie));
+#if DEBUG
+//                            System.Console.WriteLine("REST = " + rest + "(" + startTick + ", " + vstr + ")");
+#endif
                         }
                     }
                     purgeRest(rest);
