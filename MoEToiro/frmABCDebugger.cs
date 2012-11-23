@@ -73,7 +73,7 @@ namespace MoEToiro
 			/// <summary>
 			/// 音を消すまでの時間
 			/// </summary>
-			public decimal OffTime { set; get; }
+//			public decimal OffTime { set; get; }
 			/// <summary>
 			/// 曲開始からの経過時間
 			/// </summary>
@@ -113,7 +113,7 @@ namespace MoEToiro
 				this.LengthNumerator = lengthDenominator;
 				this.LengthDenominator = lengthDenominator;
 				this.OnTime = onTime;
-				this.OffTime = offTime;
+//				this.OffTime = offTime;
 
 				this.ElapsedTime = elapsedTime;
                 this.Velocity = vel;
@@ -129,7 +129,7 @@ namespace MoEToiro
 				this.LengthNumerator = note.LengthNumerator;
 				this.LengthDenominator = note.LengthDenominator;
 				this.OnTime = note.OnTime;
-				this.OffTime = note.OffTime;
+//				this.OffTime = note.OffTime;
 				this.ElapsedTime = note.ElapsedTime;
 				this.IsElapsed = note.IsElapsed;
 				this.IsNoteOff = note.IsNoteOff;
@@ -613,6 +613,7 @@ namespace MoEToiro
 		}
 
 
+
 		/// <summary>
 		/// フォームを閉じる際にちゃんと後始末しておく
 		/// </summary>
@@ -967,7 +968,7 @@ namespace MoEToiro
 										n.Scale,
 										n.LengthNumerator,
 										n.LengthDenominator,
-										baseScaleTime * note.LengthNumerator / note.LengthDenominator,
+										baseScaleTime * n.LengthNumerator / n.LengthDenominator,
 										baseScaleTime * n.LengthNumerator / n.LengthDenominator,
 										elapsedTime, velocity, n.Tie) );
 							}
